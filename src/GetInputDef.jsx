@@ -6,10 +6,9 @@ import App from './App'
 function GetInputDef() {
     const [inputWord, setInputWord] = useState('')
     const [outputDefinition, setOutputDefinition] = useState('')
-    const wordSelected = document.getElementById('word');
+    const wordSelected = document.getElementById('searchInput');
         wordSelected.addEventListener('input', (event) => {})
-        setInputword (event.target.value);
-    
+        setInputWord (event.target.value);    
     useEffect (() => {
         fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputWord}`)
             .then(response => response.json())

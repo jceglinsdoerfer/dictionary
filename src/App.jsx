@@ -1,7 +1,21 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Dictionary from './Dictionary'
-import GetInputDef from './GetInputDef'
+//import GetInputDef from './getInputDef'
+
+//const [outputDefinition, setOutputDefinition] = useState('')
+function MyButton(searchInput) {
+    const handleClick = (searchInput) => {
+    useEffect (() => {
+        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputWord}`)
+            .then(response => response.json())
+            .then(OutputDefinition => setOutputDefinition(data[0].meanings[0].definitions[0].definition))
+     
+    }, [])    
+  }
+    return OutputDefinition;
+}
+
 
 function App() {
   const [definition, setDefinition] = useState([])
@@ -14,9 +28,11 @@ function App() {
         <p>crazy is(AKA developers are):</p>
           <Dictionary/>         
         <p>Or if you want to look up your own word enter it here:</p>
-          <input type="string" id="word" placeholder="Enter your word here!"/>
-          <GetInputDef/>
-          //Output for the definition should be here.
+          <form id='searchForm'>
+            <input type='text' id='searchInput' name='query' placeholder='Enter your word'/>
+            <button type='submit' onClick={MyButton}>Find</button>
+          </form>
+          
       </div> 
     </>
   )
